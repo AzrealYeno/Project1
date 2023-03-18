@@ -1,6 +1,9 @@
 package com.example.testapp.ui.profile;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +13,10 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.testapp.R;
 import com.example.testapp.databinding.FragmentProfileBinding;
+
+import java.util.logging.Logger;
 
 public class ProfileFragment extends Fragment {
 
@@ -24,6 +30,13 @@ public class ProfileFragment extends Fragment {
         binding = FragmentProfileBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+        SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        int defaultValue = 0;
+        int bestStreak = sharedPref.getInt(getString(R.string.saved_best_streak), defaultValue);
+
+        Log.d("bestStreak", String.valueOf(bestStreak));
+        final TextView textView = binding.bestStreakView;
+        textView.setText(String.valueOf(bestStreak));
 
         return root;
     }
