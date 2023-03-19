@@ -35,7 +35,7 @@ public class ProfileFragment extends Fragment {
         int bestStreak = sharedPref.getInt(getString(R.string.saved_best_streak), defaultValue);
 
         Log.d("bestStreak", String.valueOf(bestStreak));
-        final TextView textView = binding.bestStreakView;
+        final TextView textView = binding.bestStreak;
         textView.setText(String.valueOf(bestStreak));
 
         return root;

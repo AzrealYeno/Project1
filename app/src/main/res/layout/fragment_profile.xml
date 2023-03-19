@@ -37,30 +37,45 @@
 
             <TextView
                 android:id="@+id/textView"
-                android:layout_width="202dp"
+                android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_marginTop="15dp"
+                android:layout_marginRight="15dp"
                 android:text="Best Streak: "
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/bestStreakView"
-                android:layout_width="202dp"
+                android:id="@+id/bestStreak"
+                android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_marginTop="15dp"
-                android:text=""
+                android:text="2"
                 android:textSize="20sp" />
         </LinearLayout>
 
-
-
-        <TextView
-            android:id="@+id/textView2"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginTop="15dp"
-            android:text="Total Water Drank: "
-            android:textSize="20sp" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="15dp"
+                android:text="Total Water Drank: "
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/waterDrank"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginTop="15dp"
+                android:text="3"
+                android:textSize="20sp" />
+        </LinearLayout>
+
 
         <TextView
             android:id="@+id/textView3"
@@ -70,6 +85,14 @@
             android:layout_marginTop="60dp"
             android:text="Notification Frequency"
             android:textSize="20sp" />
+
+        <Spinner
+            android:id="@+id/notifFrequency"
+            android:layout_marginTop="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:entries="@array/spinnerItems" />
+
 
     </LinearLayout>
 
