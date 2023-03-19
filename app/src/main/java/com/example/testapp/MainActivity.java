@@ -1,7 +1,9 @@
 package com.example.testapp;
 
+import android.Manifest;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
@@ -13,8 +15,10 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
+import androidx.core.content.ContextCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
@@ -62,8 +66,9 @@ public class MainActivity extends AppCompatActivity {
         TextView text3 =(TextView) v.findViewById(R.id.topTitleText3);
         text3.setText(String.valueOf(waterDrank));
 
-        createNotificationChannel();
+        requestNotificationPermission();
 
+        createNotificationChannel();
 
         sendNotification();
 
@@ -72,18 +77,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void sendNotification(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                if(notificationManager.areNotificationsEnabled()){
+                    CharSequence textTitle = "DRINK NOW!";
+                    CharSequence textContent = "Drink 1l";
+                    NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
+                            .setSmallIcon(R.drawable.ic_avatar_foreground)
+                            .setContentTitle(textTitle)
+                            .setContentText(textContent)
+                            .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+                    notificationManager.notify(123 ,builder.build());
+
+                }
+            }
+        }
 
 
-        CharSequence textTitle = "DRINK NOW!";
-        CharSequence textContent = "Drink 1l";
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
-                .setSmallIcon(R.drawable.ic_avatar_foreground)
-                .setContentTitle(textTitle)
-                .setContentText(textContent)
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
-
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-        notificationManager.notify(123 ,builder.build());
     }
 
     private void createNotificationChannel() {
@@ -100,6 +112,16 @@ public class MainActivity extends AppCompatActivity {
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
         }
+    }
+
+    private void requestNotificationPermission() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED)
+            return;
+
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.POST_NOTIFICATIONS)) {
+
+        }
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.POST_NOTIFICATIONS}, 123 );
     }
 
 }
