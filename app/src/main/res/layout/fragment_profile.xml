@@ -15,11 +15,12 @@
         android:paddingLeft="50dp"
         android:paddingRight="50dp"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
+        tools:layout_editor_absoluteY="0dp"
+        android:layout_marginBottom="60dp">
 
         <ImageView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
             android:src="@drawable/ic_dashboard_black_24dp" />
 
         <EditText
@@ -28,12 +29,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:text="Name1"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textSize="30sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="40dp">
 
             <TextView
                 android:id="@+id/textView"
@@ -41,8 +44,8 @@
                 android:layout_height="30dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginRight="15dp"
-                android:text="Best Streak: "
-                android:textSize="20sp" />
+                android:text="BEST STREAK: "
+                android:textSize="25sp" />
 
             <TextView
                 android:id="@+id/bestStreak"
@@ -50,7 +53,7 @@
                 android:layout_height="30dp"
                 android:layout_marginTop="15dp"
                 android:text="2"
-                android:textSize="20sp" />
+                android:textSize="25sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -64,8 +67,8 @@
                 android:layout_height="30dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginRight="15dp"
-                android:text="Total Water Drank: "
-                android:textSize="20sp" />
+                android:text="WATER DRANK: "
+                android:textSize="25sp" />
 
             <TextView
                 android:id="@+id/waterDrank"
@@ -73,25 +76,26 @@
                 android:layout_height="30dp"
                 android:layout_marginTop="15dp"
                 android:text="3"
-                android:textSize="20sp" />
+                android:textSize="25sp" />
         </LinearLayout>
 
 
         <TextView
             android:id="@+id/textView3"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_gravity="center"
             android:layout_marginTop="60dp"
             android:text="Notification Frequency"
-            android:textSize="20sp" />
+            android:textSize="25sp" />
 
         <Spinner
             android:id="@+id/notifFrequency"
             android:layout_marginTop="15dp"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
-            android:entries="@array/spinnerItems" />
+            android:entries="@array/spinnerItems"
+            android:textSize="30sp" />
 
 
     </LinearLayout>

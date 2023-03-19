@@ -29,20 +29,9 @@ public class MainActivity extends AppCompatActivity {
         ActivityMainBinding binding= ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        //BottomNavigationView navView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-//        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-//                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
-//                .build();
-
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
-//        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
-//        setHasOptionsMenu(true);
-//
-//        Toolbar toolbar = findViewById(R.id.toolbar);
 
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
@@ -67,11 +56,7 @@ public class MainActivity extends AppCompatActivity {
         TextView text3 =(TextView) v.findViewById(R.id.topTitleText3);
         text3.setText(String.valueOf(waterDrank));
 
-        //getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#8731a0")));
 
-
-//        String appTitle = String.format(" %s  -  %s -  %s ", waterNeeded, hydrationTimer, waterDrank);
-//        getSupportActionBar().setTitle(appTitle);
 
     }
 
